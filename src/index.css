@@ -1,0 +1,23 @@
+@import-normalize;
+
+.contenedor-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form-group-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: rgba(99, 102, 102, 0.098);
+  padding: 25px;
+  border-radius: 10px;
+}
+.btn-enviar{
+    background-color: rgb(73, 155, 214);
+    color: white;
+    border-radius: 10px;
+    border: 0;
+    height: 35px;
+}

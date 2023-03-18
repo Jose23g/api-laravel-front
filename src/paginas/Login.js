@@ -8,10 +8,17 @@ class Login extends Component {
     this.state = {
       email: [],
       password: [],
-      error: false,
+      error: null,
     };
   }
- 
+
+  consumir = (usuario, contraseña) => {
+    ingresar(usuario, contraseña).catch((err) => {
+      this.setState({ error: err.response.data.error });
+      console.error(err.response.data.error);
+    });
+  };
+
   render() {
     return (
       <div>
@@ -20,7 +27,7 @@ class Login extends Component {
           <form
             onSubmit={(ev) => {
               ev.preventDefault();
-               ingresar(this.state.email, this.state.password);
+              this.consumir(this.state.email, this.state.password);
             }}
           >
             <div className="form-group-login">
@@ -45,6 +52,7 @@ class Login extends Component {
               ></input>
 
               <input type="submit" value="submit" className="btn-enviar" />
+              {this.state.error && <p>{this.state.error}</p>}
             </div>
           </form>
         </div>

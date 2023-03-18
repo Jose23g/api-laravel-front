@@ -12,10 +12,8 @@ export async function ingresar(email, password) {
         contraseña: password,
       },
     });
-
     console.log(response.data);
-  } catch (error) {
-    console.error(error.response.data.error);
-    
+  }catch(error){
+    throw error;
   }
-}
+} 

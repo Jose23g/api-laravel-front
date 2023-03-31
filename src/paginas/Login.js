@@ -6,39 +6,40 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: [],
+      usuario: [],
       password: [],
-      error: null,
+      error: null
     };
   }
 
   consumir = (usuario, contraseña) => {
     ingresar(usuario, contraseña).catch((err) => {
-      this.setState({ error: err.response.data.error });
-      console.error(err.response.data.error);
+      this.setState({ error: err });
+      console.error(err);
     });
   };
 
   render() {
     return (
+
       <div>
         <div className="contenedor-login">
           <h1 className="encabezado">Login</h1>
           <form
             onSubmit={(ev) => {
               ev.preventDefault();
-              this.consumir(this.state.email, this.state.password);
+              this.consumir(this.state.usuario, this.state.password);
             }}
           >
             <div className="form-group-login">
               <label>Email</label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
                 placeholder="Email"
                 required
-                value={this.state.email}
-                onChange={(ev) => this.setState({ email: ev.target.value })}
+                value={this.state.usuario}
+                onChange={(ev) => this.setState({ usuario: ev.target.value })}
               ></input>
 
               <label>Password</label>
